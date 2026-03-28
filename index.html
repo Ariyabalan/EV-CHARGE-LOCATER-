@@ -1,134 +1,94 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.mi
-n.css" />
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="icon" href="./assets/images/favicon.png">
-    <link href="./stylesheet.css" rel="stylesheet">
-    <script src="./script-1.js" defer></script>
-    <title>Volt Vibe</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind -->
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+<title>Volt Vibe</title>
+<script src="./script-1.js" defer></script>
+
+<style>
+body { font-family: 'Poppins', sans-serif; }
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.6);
+}
+</style>
 </head>
-<!-- This example requires Tailwind CSS v2.0+ -->
 
-<body>
-    <nav class="flex bg-green">
-        <div class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <a href="#" id="logo-home"><img class="h-12 image_on animate__animated animate__fadeIn" src="./VV_Logo_2-removebg-preview.png" alt="Logo"></img>
-                            <img class="h-12 image_off animate__animated animate__flip "
-                                src="./VV_Logo_2-removebg-preview.png" alt="Logo"></img></a>
-                    </div>
-                    <div class="mt-2">
-                        <a href="#" class="hidden sm:block text-black hover:text-white px-3 py-2 rounded-md text-md text-4xl">Volt Vibe </a>
-                    </div>
-                    <div class="block">
-                        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 md:ml-10 flex items-baseline space-x-4">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-26 gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="./map-1.html" class="hidden sm:block text-black hover:bg-white hover:text-white-500 px-3 py-2 rounded-md text-md ">Find Nearest Charging Station</a>
-                            <a onclick="jokey();" href="#" class="hidden sm:block hover:bg-white hover:text-black text-black px-3 py-2 rounded-md text-md joke">Don't Have an ECar?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile view menu-->
-        <div id="nav-container" class="block sm:hidden">
-            <div class="button" tabindex="0">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </div>
-            <div id="nav-content" tabindex="0" class="rounded-lg">
-                <ul>
-                    <li><a href="./map-1.html" class="py-2 px-1">Locator</a></li>
+<body class="bg-gradient-to-br from-gray-50 to-green-50">
 
-                    <li><a onclick="jokey();" href="#" class="mt-10 px-1 joke">I Need A<br>Joke Now!!</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Hero section -->
-    <div class="relative bg-lightgreen overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="relative z-10 pb-8 bg-lightgreen sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-                <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                    <polygon class="bg-green" points="50,0 100,0 50,100 0,100" />
-                </svg>
+<!-- NAVBAR -->
+<nav class="glass shadow-md sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-                <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
-                    <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
+<div class="flex items-center space-x-2">
+<img src="./VV_Logo_2-removebg-preview.png" class="h-10">
+<h1 class="text-xl font-semibold tracking-wide">Volt Vibe</h1>
+</div>
 
-                        <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
-                            <div class="flex items-center justify-between w-full md:w-auto">
-                                <div class="-mr-2 flex items-center md:hidden">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-                        </div>
-                    </nav>
-                    <!-- The Modal Section -->
-                    <div id="myModal" class="hidden pt-32 fixed w-full h-full z-1 left-0 top-0 overflow-auto" style="background-color: rgba(0,0,0,0.5);">
-                        <!-- Modal content Section is here-->
-                        <div class="relative m-auto px-0 text-white w-4/5" style="background-color:#88CBB9;border-radius: 5px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);-webkit-animation-name: animatetop;-webkit-animation-duration: 0.9s;animation-name: animatetop;animation-duration: 0.9s ">
-                            <div class="rounded p-4 text-lg font-bold" style="background-color:#88CBB9;color: #39A3A6;">
-                                <span class="close relative float-right text-2xl ml-2 hover:text-black cursor-pointer">(&times;)</span>
-                                <h2>Since you don't have an ECar, here's a joke:</h2>
-                            </div>
-                            <div class="m-7">
-                                <p class="modalp bg-rounded-lg text-center"></p>
-                            </div>
-                            <div class="rounded p-4 text-lg font-bold" style="background-color:#88CBB9;color: #39A3A6;">
-                                <h3>Click the (x), or outside the box to dismiss joke</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-                    <div class="sm:text-center lg:text-left">
+<div class="hidden md:flex space-x-8 text-gray-700">
+<a href="./map-1.html" class="hover:text-green-600 transition">Stations</a>
+<button onclick="jokey()" class="hover:text-green-600 transition">Joke</button>
+</div>
 
-                        <h1 class="text-4xl tracking-tight sm:text-5xl md:text-6xl text-white">
-                            <span class="block xl:inline">Out of </span>
-                            <span class="block log xl:inline logo">Juice?</span>
-                        </h1>
-                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                            If your electric road-trip buddy needs to fuel up and recover
-                            from those off-the-beaten-path camp spots, the various grocery trips this
-                            week
-                            , or you simply want to mingle with eco-friendly pals, head on
-                            over to our Charging Station Locator.
-                        </p>
-                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                            <div class="rounded-md shadow">
-                                <a href="./map-1.html" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-black logo-bg hover:bg-white md:py-4 md:text-lg md:px-10">
-                                    Lets Gooo!
-                                </a>
-                            </div>
-                            <div class="mt-3 sm:mt-0 sm:ml-3">
+<button onclick="toggleMenu()" class="md:hidden text-xl">☰</button>
+</div>
 
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-        </div>
-        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <video class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-                poster="./frame1.PNG" autoplay muted loop playsinline>
-                <source src="./Electric Vehicle Charging Station Demo.mp4" >
-            </video>
-        </div>
-    </div>
-            <!--Footer Section is here-->
-                <div class="footer">
-                    <h1>Volt Vibe</h1>
-                    <p>&copy;Voltvibe,Inc</p>
-                </div>
+<div id="mobileMenu" class="hidden px-6 pb-4">
+<a href="./map-1.html" class="block py-2">Stations</a>
+<button onclick="jokey()" class="block py-2">Joke</button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="max-w-7xl mx-auto px-6 py-16 flex flex-col lg:flex-row items-center gap-10">
+
+<div class="lg:w-1/2 space-y-6">
+<h1 class="text-5xl font-semibold leading-tight">
+Stay <span class="text-green-500">Charged</span> Always
+</h1>
+
+<p class="text-gray-600 text-lg">
+Locate EV charging stations instantly and keep your journey uninterrupted.
+</p>
+
+<a href="./map-1.html"
+class="inline-block bg-green-500 text-white px-8 py-3 rounded-lg shadow-lg hover:scale-105 transform transition">
+Explore Stations
+</a>
+</div>
+
+<div class="lg:w-1/2">
+<video class="rounded-xl shadow-2xl" autoplay muted loop>
+<source src="./Electric Vehicle Charging Station Demo.mp4">
+</video>
+</div>
+
+</section>
+
+<!-- MODAL -->
+<div id="myModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+
+<div class="bg-white p-8 rounded-xl shadow-xl max-w-md w-full text-center animate-fadeIn">
+<span onclick="closeModal()" class="float-right cursor-pointer text-xl">&times;</span>
+
+<h2 class="text-xl font-semibold mb-4">Quick Break 😄</h2>
+<p id="jokeText" class="text-gray-700"></p>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="text-center py-6 text-gray-500">
+© 2026 Volt Vibe
+</footer>
+
 </body>
 </html>
