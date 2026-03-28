@@ -1,40 +1,39 @@
-// Get the modal, its content <div>, the button to open it, and the span to close it.
-var modal = document.getElementById("myModal");
-var modalContent = document.querySelector(".modalp");
-var span = document.getElementsByClassName("close")[0];
-var menu = document.getElementById("nav-content");
+const modal = document.getElementById("myModal");
+const jokeText = document.getElementById("jokeText");
 
-// When the user clicks the button, modal opens, fetches JokeAPI, and displays it in the modal on screen.
-function jokey() {
-  fetch("https://v2.jokeapi.dev/joke/Programming,Pun?blacklistFlags=nsfw,religious,political,racist,sexist,explicit")
-  .then(res =>{return res.json()})
-  .then(data => {
-          if(data.type === 'single'){
-            var joke = (data.joke);
-              modalContent.innerHTML = joke;
-                localStorage.setItem('joke1',JSON.stringify(joke));
-                  console.log(joke); 
-          }else if(data.type === 'twopart'){
-              modalContent.innerHTML = data.setup + '<br><br>' + data.delivery;
-                localStorage.setItem('joke2',JSON.stringify(data.setup, '<br><br>',data.delivery));
-                  console.log(data.setup, '<br><br>',data.delivery)
-          }
-      })
-menu.style.transform = "translate(-150px)"      
-modal.style.display = "block";
-
-    span.onclick = function() {
-      modal.style.display = "none";
-      // menu.style.transform = "translate(0px)" 
-      location.reload()
-    }
-        window.onclick = function(event) {
-         if (event.target == modal) {
-          modal.style.display = "none";
-          // menu.style.transform = "translate(0px)"
-          location.reload()
-         }
-        } 
-          
+// MOBILE MENU
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("hidden");
 }
-//menu.style.transform = "translate(-150px)"; 
+
+// FETCH JOKE
+function jokey() {
+  fetch("https://v2.jokeapi.dev/joke/Programming,Pun")
+    .then(res => res.json())
+    .then(data => {
+      if (data.type === "single") {
+        jokeText.innerText = data.joke;
+      } else {
+        jokeText.innerText = data.setup + " — " + data.delivery;
+      }
+      modal.classList.remove("hidden");
+    });
+}
+
+// CLOSE MODAL
+function closeModal() {
+  modal.classList.add("hidden");
+}
+
+// CLICK OUTSIDE CLOSE
+window.onclick = function(e) {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+};
+
+// REFRESH MAP
+function refreshMap() {
+  const map = document.getElementById("mapFrame");
+  map.src = map.src;
+}
